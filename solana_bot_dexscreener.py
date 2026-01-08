@@ -8,8 +8,13 @@ import json
 import os
 
 # ============= YAPILANDIRMA =============
-TELEGRAM_BOT_TOKEN = "8394953693:AAGVP2RZq_vtUQ_c7wxrCMNNr2vMZB-y808"
-TELEGRAM_CHAT_ID = "-1003489918518"  # Telegram Kanalı (DLMMalertt)
+# GÜVENLIK: Token'lar environment variable'dan alınır
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+
+# Eğer environment variable yoksa hata ver
+if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+    raise ValueError("TELEGRAM_BOT_TOKEN ve TELEGRAM_CHAT_ID environment variables tanımlanmalı!")
 
 # Normal Kriterler
 MIN_VOLUME_5M = 100000         # 100K USD
